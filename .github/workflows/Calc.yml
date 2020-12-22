@@ -1,0 +1,94 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: configure
+      run: ./configure
+    - name: make
+      run: make
+    - name: make check
+      run: make check
+    - name: make distcheck
+
+#include<iostream>
+
+using namespace std;
+
+int main()
+
+{
+
+    setlocale(LC_ALL, "ru");
+
+    double a;
+
+    double b;
+
+    int op;
+
+    cout << "Введите первое число: " << endl;
+
+    cin >> a;
+
+    cout << "Введите второе число: " << endl;
+
+    cin >> b;
+
+    cout << "Выберите операцию: " << endl
+
+         << "1. Сложение" << endl
+
+         << "2. Вычетание" << endl
+
+         << "3. Умножение" << endl
+
+         << "4. Деление" << endl;
+
+    cin >> op;
+
+    switch (op) {
+
+    case 1:
+
+        cout <<"Ответ: "<< a+b << endl;
+
+        break;
+
+    case 2:
+
+        cout <<"Ответ: "<< a-b << endl;
+
+        break;
+
+    case 3:
+
+        cout<<"Ответ: "<< a*b << endl;
+
+        break;
+
+    case 4:
+
+        cout<<"Ответ: "<<a/b<<endl;
+
+        break;
+
+    default:
+
+        cout << "Ошибка!" << endl;
+
+        break;
+
+    };
+
+}
